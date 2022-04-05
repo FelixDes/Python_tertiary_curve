@@ -1,21 +1,9 @@
-import WindowPresenter
+from WindowPresenter import WindowPresenter
 
 import sys
-import webbrowser
 
 from PyQt5 import QtGui, uic
-from PyQt5.QtCore import QSize, QRegExp
-from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QScrollArea, QLabel, QSpinBox, \
-    QTableWidget, QComboBox, QStyledItemDelegate, QLineEdit, QTableWidgetItem, QDialog, QHBoxLayout, QVBoxLayout, \
-    QMainWindow
-
-PADDING = 10
-
-ELEMENT_SIZE = QSize(150, 30)
-LONG_ELEMENT_SIZE = QSize(210, 30)
-WINDOW_SIZE = QSize(800, 800)
-INPUT_CONTAINER_SIZE = QSize(WINDOW_SIZE.width() // 2 - 2 * PADDING, 325)
+from PyQt5.QtWidgets import QApplication, QMainWindow
 
 
 class MainWidget(QMainWindow):
@@ -23,11 +11,19 @@ class MainWidget(QMainWindow):
 
     def __init__(self):
         super().__init__()
+        self.wp = WindowPresenter()
         uic.loadUi("ui.ui", self)
-
+        self.curveTypeComboBox.addItems(list(self.wp.get_curve_types()))
+        self.set_listeners()
 
     def set_listeners(self):
-        pass
+        self.runButton.clicked.connect(self.run)
+
+    def run(self):
+        self.MplWidget.canvas = self.wp.get_canvas(self.curveTypeComboBox.count(),
+                                                   self.spinBox_a.value(),
+                                                   self.spinBox_b.value(),
+                                                   self.spinBox_c.value())
 
     @staticmethod
     def start_window():

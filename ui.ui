@@ -56,7 +56,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QWidget" name="curveWidget" native="true"/>
+         <widget class="MplWidget" name="MplWidget" native="true"/>
         </item>
         <item>
          <spacer name="verticalSpacer">
@@ -144,7 +144,20 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinBox_a"/>
+               <widget class="QSpinBox" name="spinBox_a">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -174,7 +187,14 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinBox_b"/>
+               <widget class="QSpinBox" name="spinBox_b">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -204,7 +224,14 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinBox_c"/>
+               <widget class="QSpinBox" name="spinBox_c">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -248,6 +275,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MplWidget</class>
+   <extends>QWidget</extends>
+   <header>MplWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

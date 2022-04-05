@@ -10,7 +10,7 @@ class Plot3dModel:
     def __init__(self, grid_size, shift):
         pass
 
-    def get_canvas(self, curve_index) -> FigureCanvas:
+    def get_canvas(self, curve_index, *coefficients):
         match curve_index:
             case 0:
                 pass
