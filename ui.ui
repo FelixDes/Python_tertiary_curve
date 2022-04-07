@@ -41,6 +41,19 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="clearButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Clear all</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="runButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -56,20 +69,14 @@
          </layout>
         </item>
         <item>
-         <widget class="MplWidget" name="MplWidget" native="true"/>
-        </item>
-        <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+         <widget class="MplWidget" name="MplWidget" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
+         </widget>
         </item>
         <item>
          <spacer name="horizontalSpacer">
@@ -116,8 +123,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>72</width>
-             <height>450</height>
+             <width>76</width>
+             <height>434</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -157,6 +164,9 @@
                   <height>30</height>
                  </size>
                 </property>
+                <property name="minimum">
+                 <number>-99</number>
+                </property>
                </widget>
               </item>
              </layout>
@@ -194,6 +204,9 @@
                   <height>30</height>
                  </size>
                 </property>
+                <property name="minimum">
+                 <number>-99</number>
+                </property>
                </widget>
               </item>
              </layout>
@@ -230,6 +243,9 @@
                   <width>0</width>
                   <height>30</height>
                  </size>
+                </property>
+                <property name="minimum">
+                 <number>-99</number>
                 </property>
                </widget>
               </item>

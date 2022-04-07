@@ -18,12 +18,13 @@ class MainWidget(QMainWindow):
 
     def set_listeners(self):
         self.runButton.clicked.connect(self.run)
+        self.clearButton.clicked.connect(lambda: self.MplWidget.clear_plot())
 
     def run(self):
-        self.MplWidget.canvas = self.wp.get_canvas(self.curveTypeComboBox.count(),
-                                                   self.spinBox_a.value(),
-                                                   self.spinBox_b.value(),
-                                                   self.spinBox_c.value())
+        self.wp.add_points_to_widget(self.MplWidget, self.curveTypeComboBox.currentIndex(),
+                                     self.spinBox_a.value(),
+                                     self.spinBox_b.value(),
+                                     self.spinBox_c.value())
 
     @staticmethod
     def start_window():

@@ -1,8 +1,7 @@
 from Plot3dModel import Plot3dModel
-from matplotlib.backends.backend_template import FigureCanvas
 
 grid_size = 10
-shift = 0.25
+shift = 1
 
 
 class WindowPresenter:
@@ -13,5 +12,7 @@ class WindowPresenter:
     def get_curve_types(self) -> list:
         return self.curve_types
 
-    def get_canvas(self, curve_index, *args) -> FigureCanvas:
-        return self.model.get_canvas(curve_index, *args)
+    def add_points_to_widget(self, mpl_widget, curve_index, *args):
+        if 0 not in args:
+            x, y, z = self.model.get_points(curve_index, *args)
+            return mpl_widget.add_points(x, y, z)

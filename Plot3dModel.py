@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import numpy as np
 
 
@@ -9,21 +8,18 @@ class Plot3dModel:
 
     def __init__(self, grid_size, shift):
         self.fig = Figure()
-        self.canvas = FigureCanvas(self.fig)
-        self.x = np.arange(grid_size[0], grid_size[1], shift)
-        self.y = np.arange(grid_size[0], grid_size[1], shift)
+        self.x = np.arange(-grid_size, grid_size, shift)
+        self.y = np.arange(-grid_size, grid_size, shift)
         self.x, self.y = np.meshgrid(self.x, self.y)
 
-
-    def get_canvas(self, curve_index, *coefficients):
+    def get_points(self, curve_index, *coefficients):
         match curve_index:
             case 0:
                 saddle = SaddleCurve(*coefficients)
                 z = saddle.get_z(self.x, self.y)
-                self.fig.add_subplot(111, projection='3d').plot_surface(self.x, self.y, z)
-                return self.canvas
+                return self.x, self.y, z
             case 1:
-                # ellipsis =
+                pass
 
 
 class Curve:
@@ -41,7 +37,7 @@ class SaddleCurve(Curve):
         super().__init__(a, b, c)
 
     def get_z(self, x, y):
-        return (((x ** 2) / (2 * self.a ** 2)) - ((y ** 2) / (2 * self.b ** 2)))
+        return ((x ** 2) / (2 * self.a ** 2)) - ((y ** 2) / (2 * self.b ** 2))
 
 
 class EllipsoidCurve(Curve):

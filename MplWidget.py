@@ -6,10 +6,16 @@ from matplotlib.figure import Figure
 class MplWidget(QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
-        self.canvas = FigureCanvas(Figure())
+        self.fig = Figure()
+        self.canvas = FigureCanvas(self.fig)
+        self.axes = self.fig.add_subplot(111, projection='3d')
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.canvas)
 
-        vertical_layout = QVBoxLayout()
-        vertical_layout.addWidget(self.canvas)
+    def add_points(self, x, y, z):
+        self.axes.plot_surface(x, y, z)
+        self.canvas.draw()
 
-        # self.canvas.axes = self.canvas.figure.add_subplot(111, projection='3d')
-        self.setLayout(vertical_layout)
+    def clear_plot(self):
+        self.axes.cla()
+        self.canvas.draw()
