@@ -11,8 +11,11 @@ class MainWidget(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.wp = WindowPresenter()
         uic.loadUi("ui.ui", self)
+        self.setWindowTitle("Кривые третьего порядка")
+
+        self.wp = WindowPresenter()
+
         self.curveTypeComboBox.addItems(list(self.wp.get_curve_types()))
         self.set_listeners()
 
