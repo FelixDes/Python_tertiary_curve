@@ -123,7 +123,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>76</width>
+             <width>82</width>
              <height>434</height>
             </rect>
            </property>
@@ -167,6 +167,9 @@
                 <property name="minimum">
                  <number>-99</number>
                 </property>
+                <property name="value">
+                 <number>1</number>
+                </property>
                </widget>
               </item>
              </layout>
@@ -207,6 +210,9 @@
                 <property name="minimum">
                  <number>-99</number>
                 </property>
+                <property name="value">
+                 <number>1</number>
+                </property>
                </widget>
               </item>
              </layout>
@@ -246,6 +252,9 @@
                 </property>
                 <property name="minimum">
                  <number>-99</number>
+                </property>
+                <property name="value">
+                 <number>1</number>
                 </property>
                </widget>
               </item>

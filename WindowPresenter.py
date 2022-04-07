@@ -1,7 +1,7 @@
 from Plot3dModel import Plot3dModel
 
 grid_size = 10
-shift = 1
+shift = 2
 
 
 class WindowPresenter:
