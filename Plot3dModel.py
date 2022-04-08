@@ -6,25 +6,32 @@ class Plot3dModel:
     curve_types = ["Saddle", "Ellipsoid", "Elliptic paraboloid"]
 
     def __init__(self, grid_size, shift):
+        self.grid_size = grid_size
+        self.shift = shift
         self.fig = Figure()
-        self.x = np.arange(-grid_size, grid_size, shift)
-        self.y = np.arange(-grid_size, grid_size, shift)
-        self.x, self.y = np.meshgrid(self.x, self.y)
+
 
     def get_points(self, curve_index, *coefficients):
         match curve_index:
             case 0:
+                x = np.arange(-self.grid_size, self.grid_size, self.shift)
+                y = np.arange(-self.grid_size, self.grid_size, self.shift)
+                x, y = np.meshgrid(x, y)
                 saddle = SaddleCurve(*coefficients)
-                z = saddle.get_z(self.x, self.y)
-                return self.x, self.y, z
+                z = saddle.get_z(x, y)
+                return x, y, z
             case 1:
-                ellipsoid = EllipsoidCurve(*coefficients)
-                z = ellipsoid.get_z(self.x, self.y)
-                return self.x, self.y, z
+                pass
+                # ellipsoid = EllipsoidCurve(*coefficients)
+                # z = ellipsoid.get_z(x, y)
+                # return x, y, z
             case 2:
+                x = np.arange(-self.grid_size, self.grid_size, self.shift)
+                y = np.arange(-self.grid_size, self.grid_size, self.shift)
+                x, y = np.meshgrid(x, y)
                 elliptic_paraboloid = EllipticParaboloidCurve(*coefficients)
-                z = elliptic_paraboloid.get_z(self.x, self.y)
-                return self.x, self.y, z
+                z = elliptic_paraboloid.get_z(x, y)
+                return x, y, z
 
 
 class Curve:
