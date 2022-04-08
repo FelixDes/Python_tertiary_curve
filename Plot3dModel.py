@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import numpy as np
 
@@ -33,11 +32,11 @@ class Curve:
 
 
 class SaddleCurve(Curve):
-    def __init__(self, a, b, c=None):
+    def __init__(self, a, b, c):
         super().__init__(a, b, c)
 
     def get_z(self, x, y):
-        return ((x ** 2) / (2 * self.a ** 2)) - ((y ** 2) / (2 * self.b ** 2))
+        return (((x ** 2) / (2 * self.a ** 2)) - ((y ** 2) / (2 * self.b ** 2))) / self.c
 
 
 class EllipsoidCurve(Curve):

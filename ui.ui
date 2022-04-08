@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
+    <width>879</width>
     <height>500</height>
    </rect>
   </property>
@@ -123,7 +123,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>82</width>
+             <width>134</width>
              <height>434</height>
             </rect>
            </property>
@@ -151,13 +151,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinBox_a">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
+               <widget class="QDoubleSpinBox" name="spinBox_a">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -165,10 +159,10 @@
                  </size>
                 </property>
                 <property name="minimum">
-                 <number>-99</number>
+                 <double>-99.989999999999995</double>
                 </property>
                 <property name="value">
-                 <number>1</number>
+                 <double>1.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -200,7 +194,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinBox_b">
+               <widget class="QDoubleSpinBox" name="spinBox_b">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -208,10 +202,10 @@
                  </size>
                 </property>
                 <property name="minimum">
-                 <number>-99</number>
+                 <double>-99.989999999999995</double>
                 </property>
                 <property name="value">
-                 <number>1</number>
+                 <double>1.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -243,7 +237,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinBox_c">
+               <widget class="QDoubleSpinBox" name="spinBox_c">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -251,10 +245,10 @@
                  </size>
                 </property>
                 <property name="minimum">
-                 <number>-99</number>
+                 <double>-99.989999999999995</double>
                 </property>
                 <property name="value">
-                 <number>1</number>
+                 <double>1.000000000000000</double>
                 </property>
                </widget>
               </item>
