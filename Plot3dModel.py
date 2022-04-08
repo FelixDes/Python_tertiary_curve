@@ -4,7 +4,7 @@ import numpy as np
 
 
 class Plot3dModel:
-    curve_types = ["Saddle", "Ellipsoid"]
+    curve_types = ["Saddle", "Ellipsoid", "Elliptic paraboloid"]
 
     def __init__(self, grid_size, shift):
         self.fig = Figure()
@@ -19,7 +19,13 @@ class Plot3dModel:
                 z = saddle.get_z(self.x, self.y)
                 return self.x, self.y, z
             case 1:
-                pass
+                ellipsoid = EllipsoidCurve(*coefficients)
+                z = ellipsoid.get_z(self.x, self.y)
+                return self.x, self.y, z
+            case 2:
+                elliptic_paraboloid = EllipticParaboloidCurve(*coefficients)
+                z = elliptic_paraboloid.get_z(self.x, self.y)
+                return self.x, self.y, z
 
 
 class Curve:
@@ -45,4 +51,15 @@ class EllipsoidCurve(Curve):
         super().__init__(a, b, c)
 
     def get_z(self, x, y):
-        return np.sqrt((1 - (x ** 2) / (self.a ** 2) - (y ** 2) / (self.b ** 2)) / (self.c ** 2))
+    #     for i in range(len(x)):
+    #         if ((1 - (x[i][i] ** 2) / (self.a ** 2) - (y[i][i] ** 2) / (self.b ** 2)) / (self.c ** 2)) < 0:
+    #             return np.nan
+            return np.sqrt((1 - (x ** 2) / (self.a ** 2) - (y ** 2) / (self.b ** 2)) / (self.c ** 2))
+
+
+class EllipticParaboloidCurve(Curve):
+    def __init__(self, a, b, c):
+        super().__init__(a, b, c)
+
+    def get_z(self, x, y):
+        return ((x ** 2) / (2 * self.a ** 2)) + ((y ** 2) / (2 * self.b ** 2))
