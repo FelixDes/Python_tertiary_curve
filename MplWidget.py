@@ -12,10 +12,12 @@ class MplWidget(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(self.canvas)
 
-    def add_points(self, x, y, z):
-        self.axes.plot_surface(x, y, z)
+    def add_points(self, curve):
+        self.axes.plot_surface(curve.x, curve.y, curve.z)
+        self.canvas.figure.legend(title=curve.equation)
         self.canvas.draw()
 
     def clear_plot(self):
         self.axes.cla()
+        self.canvas.figure.clear()
         self.canvas.draw()

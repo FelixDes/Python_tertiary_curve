@@ -1,7 +1,7 @@
 from Plot3dModel import Plot3dModel
 
 grid_size = 10
-shift = 0.05
+shift = 0.5
 
 
 class WindowPresenter:
@@ -14,7 +14,4 @@ class WindowPresenter:
 
     def add_points_to_widget(self, mpl_widget, curve_index, *args):
         if 0 not in args:
-            x, y, z = self.model.get_points(curve_index, *args)
-            if (curve_index == 1):
-                mpl_widget.add_points(x, y, z)
-            return mpl_widget.add_points(x, y, -z)
+            return mpl_widget.add_points(self.model.get_points(curve_index, *args))
