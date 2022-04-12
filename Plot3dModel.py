@@ -90,7 +90,7 @@ class EllipsoidCurve(Curve):
 class EllipticParaboloidCurve(Curve):
     def __init__(self, a, b, c):
         super().__init__(a, b, c)
-        self.equation = r"$f(x) = \frac{x^{2}}{{%(a)s}^{2}}-\frac{y^{2}}{{%(b)s}^{2}}={%(c)s}*z$"\
+        self.equation = r"$f(x) = \frac{x^{2}}{{%(a)s}^{2}}-\frac{y^{2}}{{%(b)s}^{2}}={%(c)s}*z$" \
                         % {'a': a, 'b': b, 'c': c}
 
     def set_x_y(self, x, y):

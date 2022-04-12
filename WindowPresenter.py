@@ -14,4 +14,4 @@ class WindowPresenter:
 
     def add_points_to_widget(self, mpl_widget, curve_index, *args):
         if 0 not in args:
-            return mpl_widget.add_points(self.model.get_points(curve_index, *args))
+            return mpl_widget.add_curve(self.model.get_points(curve_index, *args))
