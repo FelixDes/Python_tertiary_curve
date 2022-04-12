@@ -20,10 +20,17 @@ class Plot3dModel:
                 saddle.set_x_y(x, y)
                 return saddle
             case 1:
-                pass
-                # ellipsoid = EllipsoidCurve(*coefficients)
-                # z = ellipsoid.get_z(x, y)
-                # return x, y, z
+                rx = 1 / (coefficients[0] ** 0.5)
+                ry = 1 / (coefficients[1] ** 0.5)
+                rz = 1 / (coefficients[2] ** 0.5)
+
+                u = np.linspace(0, 2 * np.pi, 100)
+                v = np.linspace(0, np.pi, 100)
+                x = rx * np.outer(np.cos(u), np.sin(v))
+                y = ry * np.outer(np.sin(u), np.sin(v))
+                ellipsoid = EllipsoidCurve(*coefficients, rz, u, v)
+                ellipsoid.set_x_y(x, y)
+                return ellipsoid
             case 2:
                 x = np.arange(-self.grid_size, self.grid_size, self.shift)
                 y = np.arange(-self.grid_size, self.grid_size, self.shift)
@@ -66,16 +73,19 @@ class SaddleCurve(Curve):
 
 
 class EllipsoidCurve(Curve):
-    def __init__(self, a, b, c):
+    def __init__(self, a, b, c, rz, u, v):
         super().__init__(a, b, c)
+        self.rz = rz
+        self.u = u
+        self.v = v
         self.formula = ""
 
     def set_x_y(self, x, y):
         super(EllipsoidCurve, self).set_x_y(x, y)
+        self.z = self.get_z(x, y)
 
     def get_z(self, x, y):
-        return np.sqrt((1 - (x ** 2) / (self.a ** 2) - (y ** 2) / (self.b ** 2)) / (self.c ** 2))
-
+        return self.rz * np.outer(np.ones_like(self.u), np.cos(self.v))
 
 class EllipticParaboloidCurve(Curve):
     def __init__(self, a, b, c):
