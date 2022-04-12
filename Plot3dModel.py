@@ -24,8 +24,8 @@ class Plot3dModel:
                 ry = 1 / (coefficients[1] ** 0.5)
                 rz = 1 / (coefficients[2] ** 0.5)
 
-                u = np.linspace(0, 2 * np.pi, 100)
-                v = np.linspace(0, np.pi, 100)
+                u = np.linspace(0, 2 * np.pi, 20)
+                v = np.linspace(0, np.pi, 20)
                 x = rx * np.outer(np.cos(u), np.sin(v))
                 y = ry * np.outer(np.sin(u), np.sin(v))
                 ellipsoid = EllipsoidCurve(*coefficients, rz, u, v)
@@ -78,7 +78,8 @@ class EllipsoidCurve(Curve):
         self.rz = rz
         self.u = u
         self.v = v
-        self.formula = ""
+        self.equation = r"$f(x) = \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$" \
+                        % {'a': a, 'b': b, 'c': c}
 
     def set_x_y(self, x, y):
         super(EllipsoidCurve, self).set_x_y(x, y)
@@ -86,6 +87,7 @@ class EllipsoidCurve(Curve):
 
     def get_z(self, x, y):
         return self.rz * np.outer(np.ones_like(self.u), np.cos(self.v))
+
 
 class EllipticParaboloidCurve(Curve):
     def __init__(self, a, b, c):
