@@ -38,7 +38,7 @@ class MplWidget(QWidget):
 
     def add_curve_equation(self, equation):
         eq = QLabel()
-        eq.setPixmap(self.mathTex_to_QPixmap(equation, 8))
+        eq.setPixmap(self.mathTex_to_QPixmap(equation, 10))
         self.equations.addRow(eq)
 
     def clear_curve_equations(self):
