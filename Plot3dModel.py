@@ -62,7 +62,7 @@ class Curve:
 class SaddleCurve(Curve):
     def __init__(self, a, b, c):
         super().__init__(a, b, c)
-        self.equation = r"$f(x) = \frac{x^{2}}{{%(a)s}^{2}}-\frac{y^{2}}{{%(b)s}^{2}}={%(c)s}*z$" \
+        self.equation = r"$\frac{x^{2}}{{%(a)s}^{2}}-\frac{y^{2}}{{%(b)s}^{2}}={%(c)s}*z$" \
                         % {'a': a, 'b': b, 'c': c}
 
     def set_x_y(self, x, y):
@@ -78,7 +78,7 @@ class EllipsoidCurve(Curve):
         self.rz = rz
         self.u = u
         self.v = v
-        self.equation = r"$f(x) = \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$" \
+        self.equation = r"$\frac{x^2}{{%(a)s}^2} + \frac{y^2}{{%(b)s}^2} + \frac{z^2}{{%(c)s}^2} = 1$" \
                         % {'a': a, 'b': b, 'c': c}
 
     def set_x_y(self, x, y):
@@ -92,7 +92,7 @@ class EllipsoidCurve(Curve):
 class EllipticParaboloidCurve(Curve):
     def __init__(self, a, b, c):
         super().__init__(a, b, c)
-        self.equation = r"$f(x) = \frac{x^{2}}{{%(a)s}^{2}}-\frac{y^{2}}{{%(b)s}^{2}}={%(c)s}*z$" \
+        self.equation = r"$\frac{x^{2}}{{%(a)s}^{2}}-\frac{y^{2}}{{%(b)s}^{2}}={%(c)s}*z$" \
                         % {'a': a, 'b': b, 'c': c}
 
     def set_x_y(self, x, y):
