@@ -1,6 +1,6 @@
 import matplotlib
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QFormLayout, QGroupBox, QLabel, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QFormLayout, QGroupBox, QLabel
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -45,21 +45,15 @@ class MplWidget(QWidget):
         [self.equations.removeRow(0) for _ in range(self.equations.rowCount())]
 
     def mathTex_to_QPixmap(self, mathTex, fs):
-        # ---- set up a mpl figure instance ----
-
         fig = matplotlib.figure.Figure()
         fig.patch.set_facecolor('none')
         fig.set_canvas(FigureCanvasAgg(fig))
         renderer = fig.canvas.get_renderer()
 
-        # ---- plot the mathTex expression ----
-
         ax = fig.add_axes([0, 0, 1, 1])
         ax.axis('off')
         ax.patch.set_facecolor('none')
         t = ax.text(0, 0, mathTex, ha='left', va='bottom', fontsize=fs)
-
-        # ---- fit figure size to text artist ----
 
         fwidth, fheight = fig.get_size_inches()
         fig_bbox = fig.get_window_extent(renderer)
@@ -70,8 +64,6 @@ class MplWidget(QWidget):
         tight_fheight = text_bbox.height * fheight / fig_bbox.height
 
         fig.set_size_inches(tight_fwidth, tight_fheight)
-
-        # ---- convert mpl figure to QPixmap ----
 
         buf, size = fig.canvas.print_to_buffer()
         qimage = QtGui.QImage.rgbSwapped(QtGui.QImage(buf, size[0], size[1],
