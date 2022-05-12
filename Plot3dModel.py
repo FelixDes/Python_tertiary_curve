@@ -83,7 +83,6 @@ class EllipsoidCurve(Curve):
 
     def set_x_y(self, x, y):
         super(EllipsoidCurve, self).set_x_y(x, y)
-        self.z = self.get_z(x, y)
 
     def get_z(self, x, y):
         return self.rz * np.outer(np.ones_like(self.u), np.cos(self.v))
