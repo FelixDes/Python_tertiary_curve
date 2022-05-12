@@ -3,7 +3,7 @@ import numpy as np
 
 
 class Plot3dModel:
-    curve_types = ["Saddle", "Ellipsoid", "Elliptic paraboloid", "Hyperbolic parabola", "Single cavity hyperboloid"]
+    curve_types = ["Saddle", "Ellipsoid", "Elliptic paraboloid", "Hyperbolic parabola", "Single cavity hyperboloid", "Two cavity hyperboloid"]
 
     def __init__(self, grid_size, shift):
         self.grid_size = grid_size
@@ -59,6 +59,21 @@ class Plot3dModel:
                 single_cavity_hyperboloid = SingleCavityHyperboloidCurve(*coefficients, rz, u, v)
                 single_cavity_hyperboloid.set_x_y(x, y)
                 return single_cavity_hyperboloid
+            case 5:
+                rx = 1 / (coefficients[0] ** 0.5)
+                ry = 1 / (coefficients[1] ** 0.5)
+                rz = 1 / (coefficients[2] ** 0.5)
+
+                u = np.linspace(-2, 2, 100)
+                v = np.linspace(0, 2 * np.pi, 60)
+                [u, v] = np.meshgrid(u, v)
+
+                x = rx * np.sinh(u) * np.cos(v)
+                y = ry * np.sinh(u) * np.sin(v)
+                two_cavity_hyperboloid = TwoCavityHyperboloidCurve(*coefficients, rz, u, v)
+                two_cavity_hyperboloid.set_x_y(x, y)
+                return two_cavity_hyperboloid
+
 
 
 class Curve:
@@ -149,3 +164,19 @@ class SingleCavityHyperboloidCurve(Curve):
 
     def get_z(self, x, y):
         return self.rz * np.sinh(self.u)
+
+
+class TwoCavityHyperboloidCurve(Curve):
+    def __init__(self, a, b, c, rz, u, v):
+        super().__init__(a, b, c)
+        self.rz = rz
+        self.u = u
+        self.v = v
+        self.equation = r"$\frac{x^2}{{%(a)s}^2} + \frac{y^2}{{%(b)s}^2} - \frac{z^2}{{%(c)s}^2} = -1$" \
+                        % {'a': a, 'b': b, 'c': c}
+
+    def set_x_y(self, x, y):
+        super(TwoCavityHyperboloidCurve, self).set_x_y(x, y)
+
+    def get_z(self, x, y):
+        return self.rz * np.cosh(self.u)
