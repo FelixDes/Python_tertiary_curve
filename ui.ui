@@ -123,7 +123,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>138</width>
+             <width>136</width>
              <height>434</height>
             </rect>
            </property>
@@ -249,6 +249,33 @@
                 </property>
                 <property name="value">
                  <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Grid size</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QDoubleSpinBox" name="spinBox_grid_size">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="minimum">
+                 <double>10.000000000000000</double>
                 </property>
                </widget>
               </item>

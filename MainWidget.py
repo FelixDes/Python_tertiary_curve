@@ -14,7 +14,7 @@ class MainWidget(QMainWindow):
         uic.loadUi("ui.ui", self)
         self.setWindowTitle("Кривые третьего порядка")
 
-        self.wp = WindowPresenter()
+        self.wp = WindowPresenter(self.spinBox_grid_size.value())
 
         self.curveTypeComboBox.addItems(list(self.wp.get_curve_types()))
         self.set_listeners()
@@ -24,6 +24,7 @@ class MainWidget(QMainWindow):
         self.clearButton.clicked.connect(lambda: self.MplWidget.clear_plot())
 
     def run(self):
+        self.wp = WindowPresenter(self.spinBox_grid_size.value())
         self.wp.add_points_to_widget(self.MplWidget, self.curveTypeComboBox.currentIndex(),
                                      self.spinBox_a.value(),
                                      self.spinBox_b.value(),

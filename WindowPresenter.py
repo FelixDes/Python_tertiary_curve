@@ -1,11 +1,11 @@
 from Plot3dModel import Plot3dModel
 
-grid_size = 10
+# grid_size = 10
 shift = 1
 
 
 class WindowPresenter:
-    def __init__(self):
+    def __init__(self, grid_size):
         self.model = Plot3dModel(grid_size, shift)
         self.curve_types = Plot3dModel.curve_types
 
